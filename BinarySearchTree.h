@@ -37,7 +37,7 @@ class BinarySearchTree
         inOrderDisplayGivenNode(node->right);
     }
 
-    Node<T>* findInOderSuccesor(Node<T> *node)
+    Node<T>* findBranchSuccessor(Node<T> *node)
     {
       Node<T> *current = node->right;
       if(current == NULL)
@@ -73,7 +73,7 @@ class BinarySearchTree
           }
           else
           {
-            Node<T> *succesor = this->findInOderSuccesor(current);
+            Node<T> *succesor = this->findBranchSuccesor(current);
             std::swap(succesor->data, current->data);
             return deleteKeyStartingFromNode(current, current->right, succesor->data);
           }
@@ -101,7 +101,7 @@ public:
         nodeCount = 0;
     }
     ~BinarySearchTree() {
-        this->recursiveDelete(root);
+        recursiveDelete(root);
     }
 
     bool isEmpty() {
@@ -199,7 +199,7 @@ public:
 
     bool deleteKey(const T& x)
     {
-      return this->deleteKeyStartingFromNode(NULL, root, x);
+      return deleteKeyStartingFromNode(NULL, root, x);
     }
 
 };
